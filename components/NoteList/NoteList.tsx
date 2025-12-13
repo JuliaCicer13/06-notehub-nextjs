@@ -2,7 +2,7 @@ import NoteItem from "../NoteItem/NoteItem";
 import { Note } from "@/lib/api";
 
 
-type Props = {
+export type Props = {
  notes: Note[];
 }
 
