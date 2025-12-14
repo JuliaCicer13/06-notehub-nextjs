@@ -1,3 +1,4 @@
+
 import NoteItem from "../NoteItem/NoteItem";
 import { Note } from "@/lib/api";
 

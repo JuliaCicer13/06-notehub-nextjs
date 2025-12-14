@@ -1,16 +1,16 @@
-import { Note } from "@/lib/api";
+import Link from 'next/link';
+import { Note } from '@/lib/api';
 
 type Props = {
-   item: Note;
+  item: Note;
 };
 
-
-const NoteItem = ({item}: Props) =>{
+const NoteItem = ({ item }: Props) => {
   return (
     <li>
-        <p>{item.title}</p>
+      <Link href={`/notes/${item.id}`}>{item.title}</Link>
     </li>
-  )
-}
+  );
+};
 
 export default NoteItem;

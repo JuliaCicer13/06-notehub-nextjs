@@ -26,3 +26,8 @@ export const getNotes = async () => {
     const res = await axios.get<NoteListResponse>("/notes");
     return res.data;
 }
+
+export const getSingleNote = async (id: string) => {
+  const res = await axios.get<Note>(`/note/${id}`);
+  return res.data;
+}
