@@ -7,7 +7,7 @@ return (
     <nav aria-label='Main Navigation'>
         <ul className={css.navigation}>
           <li>
-              <Link href='/'>Home</Link>
+              <Link href='/home'>Home</Link>
           </li>
           <li> 
             <Link href='/notes'>Notes</Link>

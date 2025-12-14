@@ -1,16 +1,15 @@
-import {getNotes} from "@/lib/api";
+import type { Note } from "@/types/note";
 
-import NoteList from "@/components/NoteList/NoteList";
-
-const Notes = async () => {
-    const response = await getNotes();
-
-    return (
-   <section>
-      <h1>Notes List</h1>
-      {response?.notes?.length > 0 && <NoteList notes={response.notes} />}
-    </section>
-   )
+type Props = {
+  item: Note;
 };
 
-export default Notes
+const NoteItem = ({ item }: Props) => {
+  return (
+    <li>
+      <p>{item.title}</p>
+    </li>
+  );
+}
+
+export default NoteItem;

@@ -9,9 +9,8 @@ reset: () => void;
 const Error = ({error, reset}: Props) => {
  return (
     <div>
-        <h2>Error during downloding!</h2>
-        <p>{error.message}</p>
-        <button onClick={reset}>Try again</button>
+        <p>Could not fetch the list of notes. {error.message}</p>
+        <button onClick={reset}>Спробувати знову</button>
     </div>
  )
 }
