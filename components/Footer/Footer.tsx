@@ -1,6 +1,8 @@
 import css from "./Footer.module.css"
 
-<footer className={css.footer}>
+const Footer = () => {
+ return (
+  <footer className={css.footer}>
   <div className={css.content}>
     <p>© {new Date().getFullYear()} NoteHub. All rights reserved.</p>
     <div className={css.wrap}>
@@ -12,3 +14,7 @@ import css from "./Footer.module.css"
     </div>
   </div>
 </footer>
+ )
+}
+
+export default Footer
