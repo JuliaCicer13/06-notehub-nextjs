@@ -19,7 +19,7 @@ interface CreateNotePayload {
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export const fetchNotes = async (
-  id: string,
+  id: string ,
   search: string,
   page: number,
   perPage: number,
