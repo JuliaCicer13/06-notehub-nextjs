@@ -3,9 +3,9 @@ import { useId } from "react";
 import { Formik, Form, Field} from "formik";
 import { useMutation, useQueryClient} from '@tanstack/react-query';
 import * as Yup from "yup";
-import {createNote} from "../../services/noteService"
+import {createNote} from "../../lib/api"
 import {ErrorMessage} from "formik";
-import Loader from "../Loader/Loader";
+import Loader from "../../app/loading";
 
 interface NoteFormProps {
  onSuccess: () => void;
