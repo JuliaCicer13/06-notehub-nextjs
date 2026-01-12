@@ -5,7 +5,7 @@ import { useMutation, useQueryClient} from '@tanstack/react-query';
 import * as Yup from "yup";
 import {createNote} from "../../lib/api"
 import {ErrorMessage} from "formik";
-import Loader from "../../app/loading";
+import Loader from "../Loader/loader";
 
 interface NoteFormProps {
  onSuccess: () => void;

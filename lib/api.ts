@@ -9,7 +9,6 @@ interface FetchNotesResponse {
 }
 
 interface CreateNotePayload {
-    id: string;
     title: string;
     content: string | null;
     tag: string;
@@ -18,58 +17,42 @@ interface CreateNotePayload {
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
+const api = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
+
+  },
+});
+
+
+
 export const fetchNotes = async (
-  id: string ,
   search: string,
   page: number,
-  perPage: number,
-
-): Promise<FetchNotesResponse> => {
-   await delay(2000);
-   const response =  await axios.get<FetchNotesResponse>(BASE_URL,
-    {
-     params: {
-      id,
+  perPage: number
+) : Promise<FetchNotesResponse> => {
+  const response = await api.get<FetchNotesResponse>("", {
+    params: {
       search,
       page,
       perPage,
-     } ,
-     headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`
-     },
-    });
-        return response.data;
-}
+    },
+  });
+  return response.data;
+};
+
+export const fetchNoteById = async (id: string): Promise<Note> => {
+  const response = await api.get<Note>(`/${id}`);
+  return response.data;
+};
 
 export const createNote = async (payload: CreateNotePayload): Promise<Note> => {
-    const response = await axios.post<Note>(
-    BASE_URL,
-    payload,
-    {
-       headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`
-    },
-  }
-);
- return response.data;
+  const response = await api.post<Note>("", payload);
+  return response.data;
 };
+
 export const deleteNote = async (noteId: string): Promise<Note> => {
-    const response = await axios.delete<Note>(`${BASE_URL}/${noteId}`,{
-          headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
-    }
-  });
-return response.data; 
+  const response = await api.delete<Note>(`/${noteId}`);
+  return response.data;
 }
-
-type Props = {
-  params: Promise<{ id: string }>;
-};
-
-const fetchNoteById = async ({ params }: Props) => {
-  const { id } = await params;
-  console.log('note id:', id);
-
-};
-
-export default fetchNoteById;
