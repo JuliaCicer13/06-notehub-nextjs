@@ -1,7 +1,6 @@
 "use client";
 import { fetchNotes } from "@/lib/api";
 import { useState } from 'react'
-import css from '../App/App.module.css'
 import SearchBox from "@/components/SearchBox/SearchBox";
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useDebouncedCallback } from 'use-debounce';
@@ -41,8 +40,8 @@ export default function NotesClient() {
     const totalPages = data?.totalPages ?? 1;
 
 return (
- <div className={css.app}>
-  <header className={css.toolbar}>
+ <div>
+  <header>
     <SearchBox value={search} onChange={handleSearch}/>
     {isSuccess && totalPages > 1 && (
       <Pagination
@@ -51,7 +50,7 @@ return (
         setPage={setPage}
       />
     )}
-    <button onClick={openModal} className={css.button}>Create note +</button>
+    <button onClick={openModal} >Create note +</button>
   </header>
     {isSuccess && results.length > 0 && ( <NoteList notes={results}/>)}
      <Toaster position="top-right" reverseOrder={false}/>
