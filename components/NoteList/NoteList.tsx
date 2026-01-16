@@ -26,7 +26,7 @@ export default function NoteList({notes}: NoteListProps) {
      <li key={note.id}
          className={css.listItem}
         >
-      <Link href='/notes/[id]'>
+      <Link href={`/notes/${note.id}`}>
       <h2 className={css.title}>{note.title}</h2>
         <p className={css.content}>{note.content}</p>
     </Link>
