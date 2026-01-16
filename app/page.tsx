@@ -14,7 +14,6 @@ export default async function NotePage () {
       <HydrationBoundary state={dehydrate(queryClient)}>
           <main className={css.main}>
             <div className={css.container}>
-               <h1 className={css.title}>Welcome to home</h1>
                <Home/>
             </div>
           </main>
